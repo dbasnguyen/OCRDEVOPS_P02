@@ -1,0 +1,46 @@
+spring:
+  docker:
+    compose:
+      enabled: false
+
+  application:
+    name: etudiant-backend
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:61584/etudiant_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: etudiant_db
+    password: etudiant_db
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: info
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: info
+    com:
+      openclassrooms:
+        etudiant: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+application:
+  security:
+    jwt:
+      secret-key: bXlTdXBlclNlY3JldEtleUZvckpXVFNpblByb2pldDM=
+      expiration: 86400000

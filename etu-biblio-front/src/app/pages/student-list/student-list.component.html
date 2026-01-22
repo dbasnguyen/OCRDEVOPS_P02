@@ -1,0 +1,32 @@
+<h2>Liste des étudiants</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.firstName }}</td>
+      <td>{{ student.lastName }}</td>
+      <td>{{ student.email }}</td>
+      <td>
+        <button (click)="deleteStudent(student.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Ajouter un étudiant</h3>
+
+<form (ngSubmit)="addStudent()">
+  <input type="text" placeholder="Prénom" [(ngModel)]="newStudent.firstName" name="firstName">
+  <input type="text" placeholder="Nom" [(ngModel)]="newStudent.lastName" name="lastName">
+  <input type="email" placeholder="Email" [(ngModel)]="newStudent.email" name="email">
+  <button type="submit">Ajouter</button>
+</form>

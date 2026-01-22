@@ -1,0 +1,108 @@
+package com.openclassrooms.etudiant.service;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class JwtServiceTest {
+
+    private JwtService jwtService;
+
+    @BeforeEach
+    void setUp() {
+        jwtService = new JwtService();
+        ReflectionTestUtils.setField(jwtService, "secretKey", "mySecretKey123456789");
+    }
+
+    @Test
+    public void test_generateToken_returns_non_null_token() {
+        UserDetails userDetails = User.withUsername("john")
+                .password("pass")
+                .authorities("USER")
+                .build();
+
+        String token = jwtService.generateToken(userDetails);
+
+        assertThat(token).isNotNull();
+        assertThat(token).isNotEmpty();
+    }
+
+
+
+// TEST 7 — generateToken() → token non null
+// Objectif: Tester que generateToken() retourne un token non null et non vide.
+
+@Test
+public void test_extractUsername_returns_correct_username() {
+    // GIVEN
+    UserDetails userDetails = User.withUsername("john")
+            .password("pass")
+            .authorities("USER")
+            .build();
+
+    String token = jwtService.generateToken(userDetails);
+
+    // WHEN
+    String username = jwtService.extractUsername(token);
+
+    // THEN
+    assertThat(username).isEqualTo("john");
+}
+
+
+
+// TEST 8 — extractUsername() → username correct
+// Objectif : Tester que extractUsername() extrait correctement le username contenu dans le token.
+
+@Test
+public void test_isTokenValid_returns_true_for_valid_token() {
+    // GIVEN
+    UserDetails userDetails = User.withUsername("john")
+            .password("pass")
+            .authorities("USER")
+            .build();
+
+    String token = jwtService.generateToken(userDetails);
+
+    // WHEN
+    boolean result = jwtService.isTokenValid(token, userDetails);
+
+    // THEN
+    assertThat(result).isTrue();
+}
+
+
+// TEST 9 — isTokenValid() → true / false
+// Objectif  : Tester que isTokenValid() :
+//             retourne true si le token correspond au bon utilisateur
+// retourne false si le token ne correspond pas
+
+@Test
+public void test_isTokenValid_returns_false_for_invalid_username() {
+    // GIVEN
+    UserDetails userDetails = User.withUsername("john")
+            .password("pass")
+            .authorities("USER")
+            .build();
+
+    String token = jwtService.generateToken(userDetails);
+
+    UserDetails otherUser = User.withUsername("paul")
+            .password("pass")
+            .authorities("USER")
+            .build();
+
+    // WHEN
+    boolean result = jwtService.isTokenValid(token, otherUser);
+
+    // THEN
+    assertThat(result).isFalse();
+}
+
+
+
+}
