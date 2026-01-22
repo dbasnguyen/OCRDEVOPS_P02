@@ -1,10 +1,10 @@
-# 📘 Projet P02 — Testez et améliorez une application existante  
+# Projet P02 — Testez et améliorez une application existante  
 **Auteur : Quang NGUYEN**  
 **Date de démarrage : Janvier 2026**
 
 ---
 
-##  Description du projet
+## Description du projet
 Ce projet consiste à améliorer une application existante composée d’un **backend Spring Boot** sécurisé avec JWT, d’un **frontend Angular**, et d’une **base MySQL** exécutée via Docker.
 
 Objectifs principaux :
@@ -15,7 +15,7 @@ Objectifs principaux :
 
 ---
 
-##  Architecture du projet
+## Architecture du projet
 
 ### Backend (Spring Boot)
 - API REST sécurisée JWT  
@@ -34,7 +34,7 @@ Objectifs principaux :
 
 ---
 
-## 🔧 Installation & Lancement
+## Installation & Lancement
 
 ### 1. Lancer MySQL via Docker
 ```bash
