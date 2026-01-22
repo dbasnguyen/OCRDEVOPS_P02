@@ -39,3 +39,4 @@ Objectifs principaux :
 ### 1. Lancer MySQL via Docker
 ```bash
 docker compose up -d
+```
