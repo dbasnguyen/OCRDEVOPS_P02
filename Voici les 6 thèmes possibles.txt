@@ -1,0 +1,7 @@
+Voici les 6 thèmes possibles :
+1) Architecture Azure (RG, VNet, Key Vault, PrivateLink)
+2) Architecture Atlas (clusters, backups, sécurité)
+3) Terraform (modules, structure, workspaces)
+4) Pipelines DevOps (YAML complet)
+5) Migration Data (dump, mirror, sync finale)
+6) Observabilité & SRE (monitoring, alerting, SLO)

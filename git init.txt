@@ -1,0 +1,6 @@
+git init
+git add .
+git commit -m "Initial commit - FORMATION DEVOPS Projet P02"
+git branch -M main
+git remote add origin https://github.com/dbasnguyen/OCRDEVOPS_P02.git
+git push -u origin main
